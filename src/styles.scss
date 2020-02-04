@@ -1,0 +1,302 @@
+body {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Open Sans;
+}
+
+.header {
+    height: 310px;
+    position: relative;
+    &::after {
+        content: "";
+        background: url(../img/dollar-papers.jpg) no-repeat 0 0;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+    }
+    &__body {
+        width: 600px;
+        margin: 0 auto;
+        padding: 50px 0 55px 0;
+    }
+
+    &__title {
+        color: black;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 300;
+    }
+
+    &__balance {
+        color: black;
+        text-align: center;
+        font-size: 46px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        margin: 5px 0 30px 0;
+    }
+
+    &__summary {
+        margin: 0 auto;
+    }
+
+    &__income,
+    &__expenses {
+        margin: 0 auto;
+        width: 330px;
+        height: 20px;
+        display: flex;
+        justify-content: space-between;
+        color: black;
+        font-weight: 500;
+        padding: 12px;
+    }
+
+    &__income {
+        background-color: rgb(40, 185, 181);
+        margin-bottom: 10px;
+    }
+    &__income-amount {
+        margin-right: 45px;
+        letter-spacing: 1px;
+    }
+
+    &__expenses {
+        background-color: rgb(255, 80, 73);
+    }
+
+    &__expenses-amount {
+        letter-spacing: 1px;
+    }
+
+    &__expenses-percentage {
+        background-color: rgba(255, 255, 255, 0.2);
+        text-align: center;
+        border-radius: 3px;
+        width: 34px;
+        height: 20px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .unite {
+        display: flex;
+        width: 90px;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+.plus {
+    color: #28b9b5;
+    &:focus {
+        border-color: green;
+    }
+}
+.minus {
+    color: #ff5049;
+    &:focus {
+        border-color: red;
+    }
+}
+
+.money-movement {
+    background-color: rgb(247, 247, 247);
+    border: 1px solid rgb(231, 231, 231);
+    height: 70px;
+
+    &__body {
+        width: 700px;
+        display: flex;
+        justify-content: space-around;
+        margin: 15px auto;
+    }
+
+    &__select-sign,
+    &__description,
+    &__amount,
+    &__apply {
+        border-width: 1px;
+        border-radius: 5px;
+        border-color: rgb(231, 231, 231);
+        transition: all 0.3s ease;
+        &:focus {
+            outline: none;
+        }
+    }
+
+    &__select-sign {
+        height: 40px;
+        width: 55px;
+        font-size: 20px;
+        text-align-last: center;
+        & option {
+            text-align-last: center;
+        }
+    }
+
+    &__sign-plus {
+        color: #28b9b5;
+    }
+
+    &__sign-minus {
+        color: #ff5049;
+    }
+
+    &__description {
+        width: 368px;
+        padding: 12px 15px;
+        color: black;
+    }
+
+    &__amount {
+        width: 68px;
+        padding: 12px 15px;
+        color: black;
+    }
+
+    &__apply {
+        width: 50px;
+        border: none;
+        cursor: pointer;
+        background: transparent;
+        font-size: 30px;
+        text-align: center;
+        display: flex;
+        &:active {
+            // background-color: #3e8e41;
+            // box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    }
+}
+
+.movement-history {
+    &__body {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 1000px;
+        margin: 0 auto;
+    }
+}
+
+.item {
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 14px 10px;
+
+    &__description {
+        color: #555;
+    }
+
+    &__hover {
+        position: relative;
+        width: 200px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        &:hover {
+            .item__am-perc {
+                transform: translateX(-45px);
+            }
+
+            .item__delete {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__am-perc {
+        display: flex;
+        flex-direction: row;
+        transition: all 0.3s ease;
+    }
+
+    &__amount {
+        margin: 0 15px;
+    }
+
+    &__percentage {
+        display: inline-block;
+        text-align: center;
+        border-radius: 3px;
+        width: 34px;
+        height: 20px;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__delete {
+        opacity: 0;
+        position: absolute;
+        cursor: pointer;
+        right: 10px;
+        font-size: 22px;
+        font-weight: 300;
+        transition: all 0.3s ease;
+    }
+}
+
+.income,
+.expenses {
+    width: 450px;
+    font-size: 18px;
+    &__title {
+        font-size: 26px;
+        margin: 10px;
+    }
+}
+.income {
+    &__title {
+        color: rgb(30, 190, 70);
+    }
+
+    & .item__amount {
+        color: #28b9b5;
+    }
+
+    & .item__delete {
+        color: #28b9b5;
+    }
+
+    & .item__percentage {
+        color: rgb(60, 212, 136);
+        background-color: rgb(217, 255, 247);
+    }
+}
+.expenses {
+    &__title {
+        color: rgb(236, 27, 27);
+    }
+
+    & .item__amount {
+        color: #ff5049;
+    }
+
+    & .item__delete {
+        color: #ff5049;
+    }
+
+    & .item__percentage {
+        color: rgb(255, 80, 73);
+        background-color: rgb(255, 218, 217);
+    }
+}

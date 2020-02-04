@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles.scss">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <title>Budget App</title>
+</head>
+
+<body>
+    <!-- <i class="icon ion-md-heart"></i> -->
+
+    <div class="header">
+        <div class="header__body">
+            <div class="header__title">Available Budget in <span class="header__date">January 2020</span>:</div>
+            <div class="header__balance">+ 0.00</div>
+            <div class="header__summary">
+                <div class="header__income">
+                    INCOME
+                    <div class="header__income-amount">+ 0.00</div>
+                </div>
+                <div class="header__expenses">
+                    EXPENSES
+                    <div class="unite">
+                        <div class="header__expenses-amount">- 0.00</div>
+                        <div class="header__expenses-percentage">--</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="money-movement">
+        <div class="money-movement__body">
+            <select class="money-movement__select-sign plus">
+                <option value="plus" class="money-movement__sign-plus" selected>+</option>
+                <option value="minus" class="money-movement__sign-minus">-</option>
+            </select>
+            <input class="money-movement__description plus" type="text" placeholder="Add a description"></input>
+            <input class="money-movement__amount plus" type="number" placeholder="Value"></input>
+            <button class="money-movement__apply plus">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+            </button>
+        </div>
+    </div>
+    <div class="movement-history">
+        <div class="movement-history__body">
+            <div class="income">
+                <div class="income__title">INCOME</div>
+                <div class="item">
+                    <div class="item__description">Salary</div>
+                    <div class="item__hover">
+                        <div class="item__am-perc">
+                            <div class="item__amount">+ 3000</div>
+                            <div class="item__percentage">10%</div>
+                        </div>
+                        <div class="item__delete">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="expenses">
+                <div class="expenses__title">EXPENSES</div>
+                <div class="item">
+                    <div class="item__description">Taxes</div>
+                    <div class="item__hover">
+                        <div class="item__am-perc">
+                            <div class="item__amount">- 300</div>
+                            <div class="item__percentage">10%</div>
+                        </div>
+                        <div class="item__delete">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
