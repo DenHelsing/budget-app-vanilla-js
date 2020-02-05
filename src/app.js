@@ -3,8 +3,6 @@ import uniqid from "uniqid";
 const date_span = document.querySelector(".header__date");
 
 const balance_div = document.querySelector(".header__balance");
-const incomeAmount_div = document.querySelector(".header__income-amount");
-const expensesAmount_div = document.querySelector(".header__expenses-amount");
 const expensesPercentage_div = document.querySelector(
     ".header__expenses-percentage"
 );
@@ -23,9 +21,19 @@ const budget = {
     total: 0
 };
 
-const movementBodies = {
+const movementDivs = {
     income: document.querySelector(".income__body"),
     expenses: document.querySelector(".expenses__body")
+};
+
+const totalDivs = {
+    income: document.querySelector(".header__income-amount"),
+    expenses: document.querySelector(".header__expenses-amount")
+};
+
+const totals = {
+    income: 0,
+    expenses: 0
 };
 
 addApply_but.addEventListener("click", e => applyMoneyMovement(e));
@@ -68,15 +76,33 @@ const addMoneyMovement = (type, description, amount) => {
         id: uniqid(),
         type,
         description,
-        amount
+        amount,
+        percentage: 0
     };
 
     budget[type].push(movement);
 
+    updateTotals(type);
+    calculatePercentage(type);
     updateList(type);
+    calculateExpensesPercentage();
 };
 
-const calculatePercentage = () => {};
+const calculatePercentage = type => {
+    budget[type].forEach(item => {
+        item.percentage = item.amount / totals[type];
+    });
+};
+
+const calculateExpensesPercentage = () => {
+    expensesPercentage_div.textContent = (
+        totals.expenses / totals.income
+    ).toLocaleString("en-us", {
+        style: "percent",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 1
+    });
+};
 
 const deleteMovement = e => {
     let tagId = e.target.id;
@@ -87,10 +113,17 @@ const deleteMovement = e => {
 
     budget[type] = budget[type].filter(el => el.id !== id);
 
+    updateTotals(type);
     updateList(type);
 };
 
-const convertToHTML = ({ id, type, description, amount }) => {
+const convertToHTML = ({ id, type, description, amount, percentage }) => {
+    const percent = percentage.toLocaleString("en-us", {
+        style: "percent",
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 1
+    });
+    // console.log(percent);
     return `<div class="item">
                 <div class="item__description">${description}</div>
                 <div class="item__hover">
@@ -98,7 +131,7 @@ const convertToHTML = ({ id, type, description, amount }) => {
                         <div class="item__amount">${
                             type === "income" ? "+" : "-"
                         } ${amount}</div>
-                        <div class="item__percentage">10%</div>
+                        <div class="item__percentage">${percent}</div>
                     </div>
                     <div class="item__delete" id=${type}-${id}>
                         <ion-icon name="close-circle-outline"></ion-icon>
@@ -111,13 +144,33 @@ const convertToHTML = ({ id, type, description, amount }) => {
 const updateList = type => {
     const list = budget[type].map(convertToHTML);
     console.log(type);
-    movementBodies[type].innerHTML = `${list.join("")}`;
+    movementDivs[type].innerHTML = `${list.join("")}`;
     const deleteItem = document.querySelectorAll(".item__delete");
 
     deleteItem.forEach(item => {
         item.addEventListener("click", e => deleteMovement(e));
     });
 };
+
+const updateTotals = type => {
+    totals[type] = budget[type].reduce((pr, curr) => pr + +curr.amount, 0);
+    totalDivs[type].textContent = `${type === "income" ? "+" : "-"} ${totals[
+        type
+    ].toLocaleString("en-us", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
+    budget.total = totals.income - totals.expenses;
+    console.log(budget.total);
+    balance_div.textContent = `${
+        budget.total > 0 ? "+" : "-"
+    } ${budget.total.toLocaleString("en-us", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    })}`;
+};
+
+// const upda
 
 const initialize = () => {
     const today = new Date();
