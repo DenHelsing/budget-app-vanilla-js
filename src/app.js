@@ -11,7 +11,6 @@ const addSign_select = document.querySelector(".money-movement__select-sign");
 const addDescription_input = document.querySelector(
     ".money-movement__description"
 );
-
 const addAmount_input = document.querySelector(".money-movement__amount");
 const addApply_but = document.querySelector(".money-movement__apply");
 
@@ -38,6 +37,21 @@ const totals = {
 
 addApply_but.addEventListener("click", e => applyMoneyMovement(e));
 
+addSign_select.addEventListener("change", e => onSelectChange(e));
+
+const onSelectChange = e => {
+    console.log(e.target.value);
+
+    addSign_select.classList.toggle("plus");
+    addSign_select.classList.toggle("minus");
+    addDescription_input.classList.toggle("plus");
+    addDescription_input.classList.toggle("minus");
+    addAmount_input.classList.toggle("plus");
+    addAmount_input.classList.toggle("minus");
+    addApply_but.classList.toggle("plus");
+    addApply_but.classList.toggle("minus");
+};
+
 const applyMoneyMovement = e => {
     e.preventDefault();
 
@@ -50,7 +64,13 @@ const applyMoneyMovement = e => {
     if (validated) {
         addMoneyMovement(...inputData);
     } else {
-        console.log("Enter correct data");
+        addDescription_input.placeholder = "Incorrect data entered";
+        addDescription_input.classList.toggle("error");
+        addAmount_input.classList.toggle("error");
+        setTimeout(() => {
+            addDescription_input.classList.toggle("error");
+            addAmount_input.classList.toggle("error");
+        }, 1500);
     }
 };
 
@@ -63,7 +83,7 @@ const readInputData = () => {
 };
 
 const validateInputData = (description, amount) => {
-    if (description.length >= 3 && !isNaN(amount) && amount > 0) {
+    if (description.length >= 2 && !isNaN(amount) && amount > 0) {
         return true;
     }
     return false;
