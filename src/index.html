@@ -34,53 +34,60 @@
         </div>
     </div>
     <div class="money-movement">
-        <div class="money-movement__body">
+        <form class="money-movement__body">
+            <!-- <> -->
             <select class="money-movement__select-sign plus">
-                <option value="plus" class="money-movement__sign-plus" selected>+</option>
-                <option value="minus" class="money-movement__sign-minus">-</option>
+                <option value="income" class="money-movement__sign-plus" selected>+</option>
+                <option value="expenses" class="money-movement__sign-minus">-</option>
             </select>
             <input class="money-movement__description plus" type="text" placeholder="Add a description"></input>
             <input class="money-movement__amount plus" type="number" placeholder="Value"></input>
             <button class="money-movement__apply plus">
                 <ion-icon name="checkmark-circle-outline"></ion-icon>
             </button>
-        </div>
+            <!-- </> -->
+        </form>
     </div>
     <div class="movement-history">
         <div class="movement-history__body">
             <div class="income">
                 <div class="income__title">INCOME</div>
-                <div class="item">
-                    <div class="item__description">Salary</div>
-                    <div class="item__hover">
-                        <div class="item__am-perc">
-                            <div class="item__amount">+ 3000</div>
-                            <div class="item__percentage">10%</div>
+                <div class="income__body">
+                    <!-- <div class="item">
+                        <div class="item__description">Salary</div>
+                        <div class="item__hover">
+                            <div class="item__am-perc">
+                                <div class="item__amount">+ 3000</div>
+                                <div class="item__percentage">10%</div>
+                            </div>
+                            <div class="item__delete">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </div>
                         </div>
-                        <div class="item__delete">
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </div>
-                    </div>
-
+                    </div> -->
                 </div>
             </div>
             <div class="expenses">
                 <div class="expenses__title">EXPENSES</div>
-                <div class="item">
-                    <div class="item__description">Taxes</div>
-                    <div class="item__hover">
-                        <div class="item__am-perc">
-                            <div class="item__amount">- 300</div>
-                            <div class="item__percentage">10%</div>
+                <div class="expenses__body">
+                    <!-- <div class="item">
+                        <div class="item__description">Taxes</div>
+                        <div class="item__hover">
+                            <div class="item__am-perc">
+                                <div class="item__amount">- 300</div>
+                                <div class="item__percentage">10%</div>
+                            </div>
+                            <div class="item__delete">
+                                <ion-icon name="close-circle-outline"></ion-icon>
+                            </div>
                         </div>
-                        <div class="item__delete">
-                            <ion-icon name="close-circle-outline"></ion-icon>
-                        </div>
-                    </div>
+                    </div> -->
                 </div>
+
             </div>
         </div>
     </div>
+    <script src="./app.js"></script>
 </body>
 
 </html>
