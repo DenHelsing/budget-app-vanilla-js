@@ -134,7 +134,9 @@ const deleteMovement = e => {
     budget[type] = budget[type].filter(el => el.id !== id);
 
     updateTotals(type);
+    calculatePercentage(type);
     updateList(type);
+    calculateExpensesPercentage();
 };
 
 const convertToHTML = ({ id, type, description, amount, percentage }) => {
