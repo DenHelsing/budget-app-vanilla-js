@@ -1,0 +1,17 @@
+{
+    "name": "budget-app-vanilla",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./src/app.js",
+    "scripts": {
+        "dev": "parcel serve ./src/index.html"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "sass": "^1.25.0"
+    },
+    "dependencies": {
+        "uniqid": "^5.2.0"
+    }
+}
